@@ -76,7 +76,7 @@ const playMusic = (track, pause = false) => {
 
 async function displayAlbums() {
     console.log("displaying albums")
-    let a = await fetch(`https://github.com/harshugarg2907/Spotify-Clone/tree/main/songs/`)
+    let a = await fetch(`/songs/`)
     let response = await a.text();
     let div = document.createElement("div")
     div.innerHTML = response;
@@ -87,7 +87,6 @@ async function displayAlbums() {
         const e = array[index];
         if (e.href.includes("songs/") && !e.href.includes(".htaccess")) {
             let folder = e.href.split("/").slice(-1)[0]
-            console.log(folder);
             // Get the metadata of the folder
             let a = await fetch(`/songs/${folder}/info.json`)
             let response = await a.json();
